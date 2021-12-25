@@ -1,7 +1,7 @@
 commands:
   # Time
   - command:
-    input: What time is?
+    input: What time is it
     entity: time
     action: getTime
   - command:
@@ -10,7 +10,7 @@ commands:
     action: getTime
   # Date
   - command:
-    input: What date is?
+    input: What date is it
     entity: time
     action: getDate
   - command:
@@ -19,27 +19,13 @@ commands:
     action: getDate
   # Year
   - command:
-    input: Tell me which year is
+    input: Tell me the year
     entity: time
     action: getYear
   - command:
-    input: Which year is it?
+    input: Which year is it
     entity: time
     action: getYear
-  # Weather
-  - command:
-    input: What's the weather?
-    entity: time
-    action: getWeather
-  - command:
-    input: What's the weather like?
-    entity: time
-    action: getWeather
-  # Open
-  - command:
-    input: Open Google
-    entity: open
-    action: google
 
 
 

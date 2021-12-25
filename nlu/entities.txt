@@ -1,0 +1,3 @@
+time\getYear
+time\getDate
+time\getTime

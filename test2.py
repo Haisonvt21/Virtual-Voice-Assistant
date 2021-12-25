@@ -10,6 +10,9 @@ from core import SystemInfo
 # Import NLU classifier
 from nlu.classifier import classify
 
+# Runner
+runner = Runner()
+
 # Speech Synthesis
 engine = pyttsx3.init('sapi5')# Microsoft Speech API engine
 voices = engine.getProperty ('voices')
@@ -22,13 +25,28 @@ def wishMe():
          speak ('Good Afternoon')
     else:
          speak ('Good Evening')
-
+# Function
 def speak (text):
     engine.say (text)
     engine.runAndWait()
 wishMe()
 speak ('I am Siri, how can i help you')
 
+def evaluale(text):
+    entity = classify(text)        
+    if entity == 'time\\getTime':
+        print(datetime.datetime.now().strftime('%I-%M %p'))
+        speak(SystemInfo.get_time())
+    if entity == 'time\\getDate':
+        print(datetime.datetime.now().strftime('%A-%d'))
+        speak(SystemInfo.get_date())
+    elif entity == 'time\\getYear':
+        print(datetime.datetime.now().strftime('%G'))
+        speak(SystemInfo.get_year())
+    elif entity == 'open\\notepad':
+
+    else:
+        pass
 # Speech Recognition
 
 model = Model("model")
@@ -49,19 +67,9 @@ while True:
         result= json.loads(result)
         text = result['text']
         print('you said: ',text)
-        entity = classify(text)
-        print('Text: "{}" is classified as "{}"'.format(text, entity))
-        if entity == 'time\\getTime':
-            print(datetime.datetime.now().strftime('%I-%M %p'))
-            speak(SystemInfo.get_time())
-        if entity == 'time\\getDate':
-            print(datetime.datetime.now().strftime('%A-%d'))
-            speak(SystemInfo.get_date())
-        elif entity == 'time\\getYear':
-            print(datetime.datetime.now().strftime('%G'))
-            speak(SystemInfo.get_year())
-        else:
-            pass
+        
+       
+
     
 
 
