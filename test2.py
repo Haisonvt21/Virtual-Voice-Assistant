@@ -4,8 +4,14 @@ import pyaudio
 import pyttsx3
 import json
 import datetime
+import subprocess
+import webbrowser
+import sys
+
+
 # Import the core lib
 from core import SystemInfo
+from core.system import Runner
 
 # Import NLU classifier
 from nlu.classifier import classify
@@ -31,7 +37,7 @@ def speak (text):
     engine.runAndWait()
 wishMe()
 speak ('I am Siri, how can i help you')
-
+url = 'https://www.google.com/'
 def evaluale(text):
     entity = classify(text)        
     if entity == 'time\\getTime':
@@ -43,10 +49,13 @@ def evaluale(text):
     elif entity == 'time\\getYear':
         print(datetime.datetime.now().strftime('%G'))
         speak(SystemInfo.get_year())
-    elif entity == 'open\\notepad':
-
+    elif entity == 'open\\chrome':
+        speak('opening chrome') 
+        webbrowser.open(url)
+    elif str(text).lower()=='stop':
+        sys.exit()
     else:
-        pass
+            pass
 # Speech Recognition
 
 model = Model("model")
@@ -67,6 +76,7 @@ while True:
         result= json.loads(result)
         text = result['text']
         print('you said: ',text)
+        evaluale(text)
         
        
 

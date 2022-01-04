@@ -26,7 +26,19 @@ commands:
     input: Which year is it
     entity: time
     action: getYear
-
+  # Open
+  - command:
+    input: open google
+    entity: open
+    action: Chrome
+  - command:
+    input: start google
+    entity: open
+    action: Chrome
+  - command:
+    input: Open music
+    entity: open
+    action: soundcloud
 
 
 

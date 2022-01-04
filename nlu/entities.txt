@@ -1,3 +1,5 @@
+open\Chrome
+open\soundcloud
+time\getTime
 time\getYear
 time\getDate
-time\getTime
